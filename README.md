@@ -1,1 +1,0 @@
-# genetica_py
