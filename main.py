@@ -30,3 +30,5 @@ def main():
             afegir_tret(nom_tret)
         
         comanda = input()
+
+#Prova
