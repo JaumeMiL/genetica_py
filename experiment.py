@@ -7,8 +7,10 @@ class Experiment:
         for i in range(num_ind):
             cromosoma = input()
             self._list_ind()[i] = Individu(cromosoma,num_gen)
+
     def list_ind(self):
         return self._list_ind
+    
     def consulta_individu(self, individu):
         primer_cromosoma = self.list_ind()[individu].primer_cromosoma()
         segon_cromosoma = self.list_ind()[individu].segon_cromosoma()
