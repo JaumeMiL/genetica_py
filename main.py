@@ -18,9 +18,11 @@ def main():
             print('consulta_individu', end = " ")
             id_ind = input()
             print(id_ind)
-            primer,segon = experiment.consulta_individu(id_ind)
-            print("  " + primer)
-            print("  " + segon)
+            primer_cro,segon_cro, lst_trets = experiment.consulta_individu(id_ind)
+            print("  " + primer_cro)
+            print("  " + segon_cro)
+            for i in lst_trets:
+                print("  " + i)
         
         elif comanda == 'consulta_tret':
             print('consulta_tret', end = " ")
