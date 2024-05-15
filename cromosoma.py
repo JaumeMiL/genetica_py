@@ -8,13 +8,6 @@ class Cromosoma:
     def segon_cromosoma(self):
         return self._segon_cromosoma
     
-    def bin_primer_cromosoma(self):
-        prim = "0b" + self.primer_cromosoma()
-        return prim
-    def bin_segon_cromosoma(self):
-        segon = "0b" + self.segon_cromosoma()
-        return segon
-    
     def interseccio(self,altre):
         primer = self.primer_cromosoma()
         segon = self.segon_cromosoma()
