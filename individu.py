@@ -7,6 +7,7 @@ class Individu:
         #num_gen es el nº de genes
         self._cromosoma = Cromosoma(parell,num_gen)
         self._lst_trets = []
+        self.__trets = set()
     
     def cromosoma_1(self):
         return self._cromosoma.primer_cromosoma()
@@ -29,6 +30,20 @@ class Individu:
         return primer,segon,trets
 
     # NO ESTIC SEGUR QUE AIXÒ HO POGUEM FER AQUÏ
+    def afegir_tret(self, tret):
+        self.__trets.add(tret)
+
+    def treure_tret(self, tret):
+        self.__trets.remove(tret)
+
+    def te_tret(self, tret):
+        return tret in self.__trets
+    
+    def __str__(self):
+        trets = ""
+        for i in sorted(self.__trets):
+            trets += f"\n  {i}"
+        return str(self._cromosoma) + trets
 
     def consulta_tret(self, nom_tret):
         return self._cromosoma.consulta_tret(nom_tret)
