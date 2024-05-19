@@ -15,16 +15,15 @@ class Cromosoma:
         segon_a = altre.segon_cromosoma()
         interseccio_1 = ''
         interseccio_2 = ''
-        for i in range(len(primer)):
-            if primer[i] == primer_a[i]:
-                interseccio_1.append(primer[i])
-            else:
-                interseccio_1.append('-')
-
-        for i in range(len(segon)):
-            if segon[i] == segon_a[i]:
-                interseccio_2.append(segon[i])
-            else:
-                interseccio_2.append('-')
+        interseccio_1 = self.interseccio_aux(primer,primer_a,interseccio_1)
+        interseccio_2 = self.interseccio_aux(segon,segon_a,interseccio_2)
 
         return interseccio_1, interseccio_2
+    
+    def interseccio_aux(self,crom_1,crom_2,interseccio):
+        for i in range(len(crom_1)):
+            if crom_1[i] == crom_2[i]:
+                interseccio.append(crom_1[i])
+            else:
+                interseccio.append('-')
+        return interseccio

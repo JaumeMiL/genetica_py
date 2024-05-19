@@ -24,12 +24,15 @@ class Individu:
         self._lst_trets.append(tret)
     
     def existeix_tret(self,tret): # 1
-        return True if tret in self._lst_trets else False
+        return tret in self._lst_trets
     
     def consulta_individu(self): # 1
         primer,segon = self.cromosoma_1(),self.cromosoma_2
-        trets = self.llista_trets()
-        return primer,segon,trets
+        list_t = self.llista_trets()
+        trets = ''
+        for i in list_t:
+            trets = trets + f'\n  {i}'
+        return '  '+ primer + '\n  '+ segon + trets
 
     def afegir_tret(self, tret): # 2
         self.__trets.add(tret)

@@ -20,7 +20,7 @@ class Tret:
         for a in self.individus:
             self.parell_tret.interseccio(self.__experiment.individu(a).parell())
 
-    def consulta_tret(self,tret):
+    def consulta_tret(self,tret): # Jordi no quería que hicieramos input/output desde las clases. Es decir, solo hacer prints desde el main.
         print(f"  {tret}")
         print(self.parell_tret)
         individus = sorted(self.individus)
