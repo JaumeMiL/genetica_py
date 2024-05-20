@@ -15,7 +15,7 @@ class ConjuntIndividus:
             individu = Individu(id)
             self.individus[id] = individu
 
-    def construir_arbre(self, preordre):
+    def construir_arbre(self, preordre): #En principi l'arbre només el crearem amb els identificadors dels individus
         if not preordre:
             return None
         clau_a_afegir = preordre.pop(0)
