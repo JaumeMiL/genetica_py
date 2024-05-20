@@ -14,11 +14,7 @@ class Tret:
         self._individus.add(individu)
         self._parell_tret.interseccio(self.__experiment.individu(individu).parell())
 
-    def treure_tret(self, tret, individu): # Esto, al ser dos, diría que no es necesario
-        self.individus.remove(individu)
-        self.parell_tret.reiniciar()
-        for a in self.individus:
-            self.parell_tret.interseccio(self.__experiment.individu(a).parell())
+
 
     def consulta_tret(self,tret): # Jordi no quería que hicieramos input/output desde las clases. Es decir, solo hacer prints desde el main.
         print(f"  {tret}")

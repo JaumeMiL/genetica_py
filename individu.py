@@ -37,9 +37,6 @@ class Individu:
     def afegir_tret(self, tret): # 2
         self.__trets.add(tret)
 
-    def treure_tret(self, tret): # diría que no es necesario
-        self.__trets.remove(tret)
-
     def te_tret(self, tret): # 2
         return tret in self.__trets
     

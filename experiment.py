@@ -48,3 +48,4 @@ class Experiment:
     def distribucio_tret(self,tret):
         if not tret in self.list_tret():
             return '  error'
+        
