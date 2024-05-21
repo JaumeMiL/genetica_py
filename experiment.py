@@ -6,6 +6,7 @@ item, items = pytokr(iter = True)
 
 class Experiment:
     def __init__(self,num_ind,num_gen):
+        self._num_ind = num_ind
         self._list_ind = [None for _ in range(num_ind + 1)]
         self._list_tret = {} # lo he cambiado a diccionario para poder usar el nombre del tret como referencia
         for i in range(num_ind):
@@ -42,7 +43,7 @@ class Experiment:
 
         else: # si no existe se tiene que crear
         
-            instancia_tret = Tret(nom_tret)
+            instancia_tret = Tret(nom_tret, self._num_ind)
             self._list_tret[nom_tret] = instancia_tret
     
     def distribucio_tret(self,tret):
