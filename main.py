@@ -8,7 +8,6 @@ def main():
 
         if comanda == 'experiment':
             print('experiment', end = " ")
-            #aquí falta cosa per llegir i llavors cridarem a experiment
             n = item() #nº de individuos
             m = item() #nº de genes
             print(n,m)
