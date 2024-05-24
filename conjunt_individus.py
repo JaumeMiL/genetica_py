@@ -2,7 +2,7 @@ from arbre_binari import Node
 from individu import Individu
 
 class ConjuntIndividus:
-    def __init__(self):
+        self._list_ind = [None for _ in range(num_ind + 1)]
         self.individus = {}  # diccionari amb tots els individus
         self.arbre_genealogic = None
 
