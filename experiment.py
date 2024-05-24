@@ -5,10 +5,11 @@ from pytokr import pytokr
 item, items = pytokr(iter = True)
 
 class Experiment:
-    def __init__(self,num_ind,num_gen):
+    def __init__(self, num_ind, num_gen, arbre):
         self._num_ind = num_ind
         self._list_ind = [None for _ in range(num_ind + 1)]
         self._list_tret = {} # lo he cambiado a diccionario para poder usar el nombre del tret como referencia
+        self._arbre_genealogic = arbre
         for i in range(num_ind):
             cromosoma = item()
             self._list_ind()[i] = Individu(cromosoma,num_gen)
@@ -49,4 +50,6 @@ class Experiment:
     def distribucio_tret(self,tret):
         if not tret in self.list_tret():
             return '  error'
-        
+
+
+

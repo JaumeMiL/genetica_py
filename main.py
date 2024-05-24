@@ -1,6 +1,7 @@
 from experiment import Experiment
 from individu import Individu
 from pytokr import pytokr
+from conjunt_individus import ConjuntIndividus as ci
 
 def main():
     comanda = item()
@@ -11,8 +12,12 @@ def main():
             n = item() #nº de individuos
             m = item() #nº de genes
             print(n,m)
-            experiment = Experiment(n,m)
-                    
+            llista_preordre = []
+            for i in range(2*n+1):
+                llista_preordre.append(item())
+            ci.inicialitzar_individus(llista_preordre)
+            a = ci.retornar_arbre()
+            experiment = Experiment(n, m, a)
 
         elif comanda == 'consulta_individu':
             print('consulta_individu', end = " ")

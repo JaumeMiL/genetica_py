@@ -7,13 +7,14 @@ class ConjuntIndividus:
         self.arbre_genealogic = None
 
     def inicialitzar_individus(self, preordre):
-        preordre_list = list(preordre)  # Converteixo a llista els elements del preordre
-        self.arbre_genealogic = self.construir_arbre(preordre_list)  # faig larbre genealògic cridant a la funció anterior
-
-        # Inicialitzo self.individus
-        for id in preordre_list:
+        for id in preordre:
             individu = Individu(id)
             self.individus[id] = individu
+
+        self.arbre_genealogic = self.construir_arbre(preordre)       
+
+    def retornar_arbre(self):
+        return self.arbre_genealogic
 
     def construir_arbre(self, preordre): #En principi l'arbre només el crearem amb els identificadors dels individus
         if not preordre:
@@ -21,12 +22,10 @@ class ConjuntIndividus:
         clau_a_afegir = preordre.pop(0)
         if clau_a_afegir == 0:
             return None
-        node = Node(clau_a_afegir)
-        node.left = self.construir_arbre(preordre)
-        node.right = self.construir_arbre(preordre)
-        return node
-
-
+        arbre = Node(clau_a_afegir)
+        arbre.left = self.construir_arbre(preordre)
+        arbre.right = self.construir_arbre(preordre)
+        return arbre
 
     def obtenir_individu(self, id):
         return self.individus.get(id)
