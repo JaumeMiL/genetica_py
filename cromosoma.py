@@ -13,17 +13,18 @@ class Cromosoma:
         segon = self.segon_cromosoma()
         primer_a = altre.primer_cromosoma()
         segon_a = altre.segon_cromosoma()
+        def interseccio_aux(crom_1,crom_2,interseccio):
+            for i in range(len(crom_1)):
+                if crom_1[i] == crom_2[i]:
+                    interseccio.append(crom_1[i])
+                else:
+                    interseccio.append('-')
+            return interseccio
         interseccio_1 = ''
         interseccio_2 = ''
-        interseccio_1 = self.interseccio_aux(primer,primer_a,interseccio_1)
-        interseccio_2 = self.interseccio_aux(segon,segon_a,interseccio_2)
+        interseccio_1 = interseccio_aux(primer,primer_a,interseccio_1)
+        interseccio_2 = interseccio_aux(segon,segon_a,interseccio_2)
 
         return interseccio_1, interseccio_2
     
-    def interseccio_aux(self,crom_1,crom_2,interseccio):
-        for i in range(len(crom_1)):
-            if crom_1[i] == crom_2[i]:
-                interseccio.append(crom_1[i])
-            else:
-                interseccio.append('-')
-        return interseccio
+    

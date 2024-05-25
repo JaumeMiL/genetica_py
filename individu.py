@@ -17,11 +17,18 @@ class Individu:
     def cromosoma_2(self):
         return self._cromosoma.segon_cromosoma()
     
+    def parell_cromosomes(self):
+        return self._cromosoma
+
     def llista_trets(self): # 1
         return self._lst_trets
     
     def nou_tret(self,tret): # 1
-        self._lst_trets.append(tret)
+        if self.existeix_tret(tret): # se mira si el ind. al que se le quiere añadir lo tiene
+            return False # si es así se generará el error
+        else:
+            self._lst_trets.append(tret)
+            return True
     
     def existeix_tret(self,tret): # 1
         return tret in self._lst_trets
