@@ -24,7 +24,7 @@ class Tret:
 
 
 
-    def consulta_tret(self,con_ind): # Jordi no quería que hicieramos input/output desde las clases. Es decir, solo hacer prints desde el main.
+    def consulta_tret(self,con_ind): # No sé si lo que estoy haciendo aquí se puede hacer.
 
         individus = sorted(self.individus)
         for a in individus:

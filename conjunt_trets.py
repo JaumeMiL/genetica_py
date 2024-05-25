@@ -10,7 +10,7 @@ class Conjunt_trets:
     def element_llista(self,element):
         return self.list_tret()[element]
 
-    def afegir_tret(self,nom_tret,persona,cromosoma): # se puede cambiar, es solo como una idea
+    def afegir_tret(self,nom_tret,persona,cromosoma): # no sé si puedo coger la intancia de cromosoma de la otra clase
 
         if nom_tret in self.list_tret(): # si no se tiene pero existe el tret se le añade al ind.
             self.element_llista[nom_tret].afegir_individu(persona,cromosoma)

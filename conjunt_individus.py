@@ -11,7 +11,7 @@ class ConjuntIndividus:
         self.individus = {}  # diccionari amb tots els individus
         self.arbre_genealogic = None
 
-    def get_parell_cromosomes(self,individu):
+    def get_parell_cromosomes(self,individu): # No sé si esto se puede hacer
         return self.ind(individu).parell_cromosomes()
 
     def list_ind(self):
