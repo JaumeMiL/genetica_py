@@ -1,11 +1,23 @@
-from collections import deque
+from pytokr import pytokr
 
-# L'arbre binari amb diccionaris l'hem vist *abans* de veure
-# les estructures dinàmiques de dades. Per això fem servir el
-# deque per al recorregut per nivells.
+#------------------------------------------------------------------------
 
 class ArbreBinari:
 
+    #------------------- classe _Node interna --------------------------
+    class _Node:
+        __slots__ = '_element', '_left', '_right'   # streamline memory usage
+
+        def __init__(self, element, left = None, right = None):
+            self._element = element
+            self._left    = left
+            self._right   = right
+
+        
+    #----------------------------------------- ------------------------
+
+    # Al tant amb la distinció entre l'arbre buit (que no és None) i el node buit, que sí que ho és
+    
     def __init__(self,v=None,esq=None,dre=None):
         """
         Al tanto! un arbre binari buit NO és None
@@ -15,11 +27,11 @@ class ArbreBinari:
         """
         assert (v is None and esq is None and dre is None) or v is not None
         if v is None:
-            self.__node = None
+            self._root = None   # Arbre buit
         else:
-            fesq  = esq if esq is not None else ArbreBinari()
-            fdre  = dre if dre is not None else ArbreBinari()
-            self.__node = {"v": v, "fesq": fesq, "fdre": fdre}
+            l = esq._root if (esq is not None) else None    # <== ATENCIÓ!!!
+            r = dre._root if (dre is not None) else None    # <== ATENCIÓ!!!
+            self._root = self._Node(v, l, r)
             
     # Getters
     def valor_arrel(self):
@@ -27,21 +39,28 @@ class ArbreBinari:
         Pre: Suposem que self no és buit
         retorna el valor a l'arrel de self
         """
-        return self.__node["v"]
+        assert(not self.buit())
+        return self._root._element
     
     def fill_esq(self):
         """
         Pre: Suposem que self no és buit
         retorna un ArbreBinari que representa el fill esquerre de self
         """
-        return self.__node["fesq"]
+        assert(not self.buit())
+        lft = ArbreBinari()
+        lft._root = self._root._left
+        return lft
     
     def fill_dre(self):
         """
         Pre: Suposem que self no és buit
         retorna un ArbreBinari que representa el fill dret de self
         """
-        return self.__node["fdre"]
+        assert(not self.buit())
+        rft = ArbreBinari()
+        rft._root   = self._root._right
+        return rft
 
     # Setters
     def modificar_valor_arrel(self,v):
@@ -50,30 +69,32 @@ class ArbreBinari:
         """
         assert(v is not None)
         if not self.buit():
-            self.__node["v"] = v
+            self._root._element = v
         else:
-            self.__node =  {"v": v, "fesq": ArbreBinari(), "fdre": ArbreBinari()}
+            self._root = self._Node(v)
         
     def modificar_fill_esq(self,esq):
         """
         Pre: esq és un ArbreBinari i self no és buit
         canvia el fill esquerre de self
         """
-        self.__node["fesq"] = esq
+        assert(not self.buit())
+        self._root._left = esq._root
         
     def modificar_fill_dre(self,dre):
         """
         Pre: dre és un ArbreBinari i self no és buit
         canvia el fill dret de self
         """
-        self.__node["fdre"] = dre
+        assert(not self.buit())
+        self._root._right = dre._root
         
     # Altres operacions
     def buit(self):
         """
         retorna True si self és buit, False en altre cas
         """
-        return self.__node == None
+        return self._root == None
         
     def fulla(self):
         """
@@ -81,58 +102,77 @@ class ArbreBinari:
         """
         if self.buit():
             return False
-        return self.fill_esq().buit() and self.fill_dre().buit()
+        return self._root._left is None and self._root._right is None
 
+    def __eq__(self,b):
+        # Pre: b és un ArbreBinari
+        def eq_aux(a,b):
+            if a is None:
+                return b is None
+            elif b is None:
+                return False
+            else:
+                if a._element != b._element:
+                    return False
+                else:
+                    return eq_aux(a._left,b._left) and eq_aux(a._right, b._right)
+        return eq_aux(self._root,b._root)
+
+    def __str__(self):   # Escriure l'arbre com a string, amb 0 com a marca
+        if not self.buit():
+            x = self.valor_arrel()
+            return ' ' + str(x) + str(self.fill_esq()) + str(self.fill_dre())
+        else:
+            return ' 0'
+    
     # Recorreguts 
     def preordre(self):
         """
         retorna una llista amb els elements de self, ordenats d'acord a la definició 
         del recorregut en preordre
         """
+        def _preordre(t):
+            if t is None:
+                return []
+            else:
+                return [t._element] + _preordre(t._left) + _preordre(t._right)
+
         if self.buit():
             return []
         else:
-            return [self.valor_arrel()] + self.fill_esq().preordre() + self.fill_dre().preordre()
+            return _preordre(self._root)        
 
     def postordre(self):
         """
         retorna una llista amb els elements de self, ordenats d'acord a la definició 
         del recorregut en postordre
         """
+        def _postordre(t):
+            if t is None:
+                return []
+            else:
+                return _postordre(t._left) + _postordre(t._right) + [t._element] 
+
         if self.buit():
             return []
         else:
-            return self.fill_esq().postordre() + self.fill_dre().postordre() + [self.valor_arrel()]
+            return _postordre(self._root)
         
     def inordre(self):
         """
         retorna una llista amb els elements de self, ordenats d'acord a la definició 
         del recorregut en inordre
         """
-        if self.buit():
-            return []
-        else:
-            return self.fill_esq().inordre() + [self.valor_arrel()] + self.fill_dre().inordre()
+        def _inordre(t):
+            if t is None:
+                return []
+            else:
+                return _inordre(t._left) + [t._element] + _inordre(t._right)
 
-    def nivells(self):
-        """
-        retorna una llista amb els elements de self, ordenats d'acord a la definició 
-        del recorregut per nivells
-        """
         if self.buit():
             return []
         else:
-            resultat = []
-            q = deque()
-            q.append(self)
-            while len(q) > 0:
-                tt = q.popleft()
-                resultat.append(tt.valor_arrel())
-                if not tt.fill_esq().buit():
-                    q.append(tt.fill_esq())
-                if not tt.fill_dre().buit():
-                    q.append(tt.fill_dre())
-            return resultat
+            return _inordre(self._root)
         
     def __repr__(self):
         if self.buit():
@@ -152,5 +192,16 @@ class ArbreBinari:
                 r_esq = self.fill_esq().__repr__()
                 r_dre = self.fill_dre().__repr__()
                 return f"ArbreBinari({rt}, esq={r_esq}, dre={r_dre})"
+                        
+def llegeix_arbrebinari_int(marca):
+    x = int(item())
+    if x != marca:
+        l = llegeix_arbrebinari_int(marca)
+        r = llegeix_arbrebinari_int(marca)
+        return ArbreBinari(x,l,r)
+    else:
+        return ArbreBinari()
 
+#------------------------------------------------------------------------
 
+item, items = pytokr(iter=True)

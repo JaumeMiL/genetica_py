@@ -1,15 +1,16 @@
-from arbre_binari import Node
+from arbre_binari import *
 from individu import Individu
 from pytokr import pytokr
 
 item, items = pytokr(iter = True)
+
 
 class ConjuntIndividus:
     def __init__(self,num_ind):
         self._num_ind = num_ind
         self._list_ind = [None for _ in range(num_ind + 1)]
         self.individus = {}  # diccionari amb tots els individus
-        self.arbre_genealogic = None
+        self.arbre_genealogic = ArbreBinari()
 
     def get_parell_cromosomes(self,individu): # No sé si esto se puede hacer
         return self.ind(individu).parell_cromosomes()
@@ -30,28 +31,17 @@ class ConjuntIndividus:
             self._list_ind()[i] = Individu(cromosoma,num_gen)
     
     def consulta_individu(self, individu):
-        return self.ind(individu).consulta_individu()
-
-    def inicialitzar_individus(self, preordre):
-        for id in preordre:
-            individu = Individu(id)
-            self.individus[id] = individu
-
-        self.arbre_genealogic = self.construir_arbre(preordre)       
+        return self.ind(individu).consulta_individu() 
 
     def retornar_arbre(self):
         return self.arbre_genealogic
 
-    def construir_arbre(self, preordre): #En principi l'arbre només el crearem amb els identificadors dels individus
-        if not preordre:
-            return None
-        clau_a_afegir = preordre.pop(0)
-        if clau_a_afegir == 0:
-            return None
-        arbre = Node(clau_a_afegir)
-        arbre.left = self.construir_arbre(preordre)
-        arbre.right = self.construir_arbre(preordre)
-        return arbre
+    def llegeix_arbrebinari_int(self):
+        x = int(item())
+        if x != 0:
+            l = self.llegeix_arbrebinari_int()
+            r = self.llegeix_arbrebinari_int()
+            self.arbre_genealogic = ArbreBinari(x,l,r)
 
     def obtenir_individu(self, id):
         return self.individus.get(id)

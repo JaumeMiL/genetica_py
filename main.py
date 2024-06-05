@@ -15,11 +15,7 @@ def main():
             con_ind = ci(n)
             con_ind.llegir_individu(m)
             con_trets = ct(m)
-            llista_preordre = []
-
-            for i in range(2*n+1): # he preguntado a Jordi y esto no le gusta
-                llista_preordre.append(item())
-            con_ind.inicialitzar_individus(llista_preordre)
+            con_ind.llegeix_arbrebinari_int()
             a = con_ind.retornar_arbre()
 
         elif comanda == 'consulta_individu':
