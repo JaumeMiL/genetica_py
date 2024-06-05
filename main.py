@@ -6,7 +6,7 @@ from conjunt_trets import Conjunt_trets as ct
 def main():
     comanda = item()
     while comanda != 'fi':
-
+        
         if comanda == 'experiment':
             print('experiment', end = " ")
             n = int(item()) #nº de individuos
