@@ -34,7 +34,8 @@ class Individu:
         return tret in self._lst_trets
     
     def consulta_individu(self): # 1
-        primer,segon = self.cromosoma_1(),self.cromosoma_2
+        # Adaptem primer i segon perquè siguin una cadena
+        primer,segon = self.cromosoma_1(),self.cromosoma_2()
         list_t = self.llista_trets()
         trets = ''
         for i in list_t:

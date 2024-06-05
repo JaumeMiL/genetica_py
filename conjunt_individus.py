@@ -12,23 +12,20 @@ class ConjuntIndividus:
         self.individus = {}  # diccionari amb tots els individus
         self.arbre_genealogic = ArbreBinari()
 
-    def get_parell_cromosomes(self,individu): # No sé si esto se puede hacer
-        return self.ind(individu).parell_cromosomes()
-
     def list_ind(self):
         return self._list_ind
     
     def ind(self,individu):
         lst = self.list_ind()
-        return lst[individu]
+        return lst[int(individu)]
     
     def afegir_tret(self,nom_tret,persona):
         return self.ind(persona).nou_tret(nom_tret)
 
-    def llegir_individu(self,num_gen):
+    def llegir_individu(self, num_gen):
         for i in range(self._num_ind):
             cromosoma = item()
-            self._list_ind()[i] = Individu(cromosoma,num_gen)
+            self._list_ind[i] = Individu(cromosoma, num_gen)
     
     def consulta_individu(self, individu):
         return self.ind(individu).consulta_individu() 

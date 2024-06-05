@@ -9,8 +9,8 @@ def main():
 
         if comanda == 'experiment':
             print('experiment', end = " ")
-            n = item() #nº de individuos
-            m = item() #nº de genes
+            n = int(item()) #nº de individuos
+            m = int(item()) #nº de genes
             print(n,m)
             con_ind = ci(n)
             con_ind.llegir_individu(m)
@@ -20,7 +20,7 @@ def main():
 
         elif comanda == 'consulta_individu':
             print('consulta_individu', end = " ")
-            id_ind = item()
+            id_ind = int(item()) 
             print(id_ind)
             consulta = con_ind.consulta_individu(id_ind)
             print(consulta)
