@@ -5,7 +5,7 @@ from arbre_binari import ArbreBinari
 # Definim unes variables constants
 NUM_EXPERIMENTS = 3
 MAX_INDIVIDUS = 30
-MAX_LLLARG_CROMO = 10
+MAX_LLARG_CROMO = 10
 NUM_MAXIM_INSTRUCCIONS = 20
 NOM_TRET_LLARGADA = 5
 
@@ -57,7 +57,7 @@ for i in range(NUM_EXPERIMENTS):
     if n % 2 == 0:
         n = n - 1
 
-    m = random.randint(1, MAX_LLLARG_CROMO)
+    m = random.randint(1, MAX_LLARG_CROMO)
     print(f"experiment {n} {m}")
 
     arbre = generar_arbre_binari(n)
