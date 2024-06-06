@@ -6,7 +6,7 @@ from arbre_binari import ArbreBinari
 NUM_EXPERIMENTS = 3
 MAX_INDIVIDUS = 30
 MAX_LLLARG_CROMO = 10
-NUM_MAXIM_INSTRUCCIONS = 9
+NUM_MAXIM_INSTRUCCIONS = 20
 NOM_TRET_LLARGADA = 5
 
 # Generarem un arbre aleatori amb n nodes amb n senar
