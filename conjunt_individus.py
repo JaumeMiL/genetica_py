@@ -1,4 +1,4 @@
-from arbre_binari import *
+from arbre_binari import ArbreBinari
 from individu import Individu
 from pytokr import pytokr
 
@@ -10,7 +10,7 @@ class ConjuntIndividus:
         self._num_ind = num_ind
         self._list_ind = [None for _ in range(num_ind + 1)]
         self.individus = {}  # diccionari amb tots els individus
-        self.arbre_genealogic = ArbreBinari()
+        self.arbre_genealogic = None
 
     def list_ind(self):
         return self._list_ind
