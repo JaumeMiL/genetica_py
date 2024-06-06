@@ -23,7 +23,7 @@ class ConjuntIndividus:
         return self.ind(persona).nou_tret(nom_tret)
 
     def llegir_individu(self, num_gen):
-        for i in range(self._num_ind):
+        for i in range(1, self._num_ind + 1):
             cromosoma = item()
             self._list_ind[i] = Individu(cromosoma, num_gen)
     

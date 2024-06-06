@@ -4,6 +4,7 @@ class Conjunt_trets:
     def __init__(self,num_ind):
         self._list_tret = {} # lo he cambiado a diccionario para poder usar el nombre del tret como referencia
         self._num_ind = num_ind
+    
     def list_tret(self):
         return self._list_tret
 
@@ -20,7 +21,7 @@ class Conjunt_trets:
             self.list_tret[nom_tret] = instancia_tret
             self.element_llista[nom_tret].afegir_individu(persona,cromosoma)
     
-    def consulta_tret(self,tret,con_ind):
+    def consulta_tret(self, tret, con_ind):
         if not tret in self.list_tret():
             return '  error'
         else:

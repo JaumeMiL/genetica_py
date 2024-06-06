@@ -41,15 +41,15 @@ def generar_instruccions(n):
             print(f"{comanda} {random.randint(1, n)}")
 
         elif comanda in ["afegir_tret", "distribucio_trets", "consulta_tret"]:
-            ran = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
+            random_paraules = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
             if trets and random.randint(0, 1):
                 ran = random.sample(sorted(trets), 1)[0]
             trets.add(ran)
 
             if comanda == "afegir_tret":
-                print(f"{comanda} {ran} {random.randint(1, n)}")
+                print(f"{comanda} {random_paraules} {random.randint(1, n)}")
             else:
-                print(f"{comanda} {ran}")
+                print(f"{comanda} {random_paraules}")
 
 # Anem generant els experiments i les instruccions
 for i in range(NUM_EXPERIMENTS):

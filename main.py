@@ -13,9 +13,9 @@ def main():
             m = int(item()) #nº de genes
             print(n,m)
             con_ind = ci(n)
+            con_ind.llegeix_arbrebinari_int()
             con_ind.llegir_individu(m)
             con_trets = ct(m)
-            con_ind.llegeix_arbrebinari_int()
             a = con_ind.retornar_arbre()
 
         elif comanda == 'consulta_individu':
@@ -29,7 +29,7 @@ def main():
             print('consulta_tret', end = " ")
             nom_tret = item()
             print(nom_tret)
-            consulta = con_trets.consulta_tret(nom_tret)
+            consulta = con_trets.consulta_tret(nom_tret, con_ind)
             print(consulta)
 
         elif comanda == 'distribucio_tret':
