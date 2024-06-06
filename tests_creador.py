@@ -4,10 +4,10 @@ from arbre_binari import ArbreBinari
 
 # Definim unes variables constants
 NUM_EXPERIMENTS = 3
-MAX_INDIVIDUS = 300
-MAX_LLLARG_CROMO = 100000
-NUM_MAXIM_INSTRUCCIONS = 70
-NOM_TRET_LLARGADA = 30
+MAX_INDIVIDUS = 30
+MAX_LLLARG_CROMO = 10
+NUM_MAXIM_INSTRUCCIONS = 9
+NOM_TRET_LLARGADA = 5
 
 # Generarem un arbre aleatori amb n nodes amb n senar
 def generar_arbre_binari(n):
@@ -41,7 +41,7 @@ def generar_instruccions(n):
             print(f"{comanda} {random.randint(1, n)}")
 
         elif comanda in ["afegir_tret", "distribucio_trets", "consulta_tret"]:
-            ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k=NOM_TRET_LLARGADA))
+            ran = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
             if trets and random.randint(0, 1):
                 ran = random.sample(sorted(trets), 1)[0]
             trets.add(ran)
