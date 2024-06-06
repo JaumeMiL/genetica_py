@@ -35,6 +35,7 @@ def main():
         elif comanda == 'distribucio_tret':
             print('distribucio_tret', end = " ")
             nom_tret = item()
+            print(nom_tret)
             distribucio = con_trets.distribucio_tret(nom_tret)
             print(distribucio)
 
@@ -42,15 +43,14 @@ def main():
             print('afegir_tret', end = " ")
             nom_tret = item()
             persona = item()
-            comp_i, crom = con_trets.afegir_tret(nom_tret,persona)
-            comp_t = con_ind.afegir_tret(nom_tret,persona,crom)
+            comp_t = con_ind.afegir_tret(nom_tret,persona)
+            comp_i = con_trets.afegir_tret(nom_tret,persona,con_ind)
+            print(nom_tret, persona)
             if not comp_t and not comp_i:
                 print('  error')
-            elif (not comp_t and comp_i) or (not comp_i and comp_t):
-                print('~~~~~~~~~~~~~')
         
         comanda = item()
-        
+    print('fi')
 item, items = pytokr(iter = True)
 
 main()

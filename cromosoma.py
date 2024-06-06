@@ -16,14 +16,18 @@ class Cromosoma:
         def interseccio_aux(crom_1,crom_2,interseccio):
             for i in range(len(crom_1)):
                 if crom_1[i] == crom_2[i]:
-                    interseccio.append(crom_1[i])
+                    interseccio += crom_1[i]
                 else:
-                    interseccio.append('-')
+                    interseccio += '-'
             return interseccio
         interseccio_1 = ''
         interseccio_2 = ''
         interseccio_1 = interseccio_aux(primer,primer_a,interseccio_1)
         interseccio_2 = interseccio_aux(segon,segon_a,interseccio_2)
+        for i in range(len(interseccio_1)):
+            if interseccio_1[i] == '-' or interseccio_2[i] == '-':
+                interseccio_1 = interseccio_1[:i] + '-' + interseccio_1[i + 1:]
+                interseccio_2 = interseccio_2[:i] + '-' + interseccio_2[i + 1:]
 
         return interseccio_1, interseccio_2
     
