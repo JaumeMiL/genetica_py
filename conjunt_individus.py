@@ -33,12 +33,6 @@ class ConjuntIndividus:
     def retornar_arbre(self):
         return self._arbre_genealogic
 
-    def llegeix_arbrebinari_int(self):
-        x = int(item())
-        if x != 0:
-            l = self.llegeix_arbrebinari_int()
-            r = self.llegeix_arbrebinari_int()
-            self._arbre_genealogic = ArbreBinari(x,l,r)
 
     def obtenir_individu(self, id):
         return self._individus.get(id)
