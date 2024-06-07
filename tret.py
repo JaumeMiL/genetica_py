@@ -29,6 +29,39 @@ class Tret:
             #self._parell_tret.interseccio(self.__experiment.individu(individu).parell())
             return True
 
+    def _camins(self,lst,arbre):
+        def camins_aux(arbre,node,cami):
+            if arbre.valor_arrel() == node:
+                cami.append(node)
+                return cami
+            else:
+                cami.append(arbre.valor_arrel())
+                esq = camins_aux(arbre.fill_esq(),node,[]) if not arbre.fill_esq().buit() else None
+                dre = camins_aux(arbre.fill_dre(),node,[]) if not arbre.fill_dre().buit() else None
+                if esq != None:
+                    cami += esq
+                elif dre != None:
+                    cami+= dre
+                else:
+                    cami = None
+                return cami
+        cami = set()
+        for i in lst:
+            resultat = camins_aux(arbre,int(i),[])
+            for j in resultat:
+                cami.add(j)
+        return cami
+
+    def distribucio_tret(self,inordre,arbre_gen):
+        distribucio = ' '
+        cami = self._camins(self.lst_individus(),arbre_gen)
+        for i in range(len(inordre)):
+            if inordre[i] in cami:
+                if str(inordre[i]) in self.lst_individus():
+                    distribucio += ' ' + str(inordre[i])
+                else:
+                    distribucio += ' ' + str(-inordre[i])
+        return distribucio
 
 
     def consulta_tret(self,con_ind): # No sé si lo que estoy haciendo aquí se puede hacer.

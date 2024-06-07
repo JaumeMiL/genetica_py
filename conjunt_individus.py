@@ -9,8 +9,8 @@ class ConjuntIndividus:
     def __init__(self,num_ind):
         self._num_ind = num_ind
         self._list_ind = [None for _ in range(num_ind + 1)]
-        self.individus = {}  # diccionari amb tots els individus
-        self.arbre_genealogic = None
+        self._individus = {}  # diccionari amb tots els individus
+        self._arbre_genealogic = None
 
     def list_ind(self):
         return self._list_ind
@@ -31,17 +31,17 @@ class ConjuntIndividus:
         return self.ind(individu).consulta_individu() 
 
     def retornar_arbre(self):
-        return self.arbre_genealogic
+        return self._arbre_genealogic
 
     def llegeix_arbrebinari_int(self):
         x = int(item())
         if x != 0:
             l = self.llegeix_arbrebinari_int()
             r = self.llegeix_arbrebinari_int()
-            self.arbre_genealogic = ArbreBinari(x,l,r)
+            self._arbre_genealogic = ArbreBinari(x,l,r)
 
     def obtenir_individu(self, id):
-        return self.individus.get(id)
+        return self._individus.get(id)
 
     def __repr__(self):
-        return f"ConjuntIndividus({self.individus}, Arbre: {self.arbre_genealogic})"
+        return f"ConjuntIndividus({self._individus}, Arbre: {self._arbre_genealogic})"

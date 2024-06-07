@@ -13,10 +13,10 @@ def main():
             m = int(item()) #nº de genes
             print(n,m)
             con_ind = ci(n)
-            con_ind.llegeix_arbrebinari_int()
-            con_ind.llegir_individu(m)
             con_trets = ct(m)
-            a = con_ind.retornar_arbre()
+            con_trets.llegeix_arbrebinari_int()
+            con_ind.llegir_individu(m)
+
 
         elif comanda == 'consulta_individu':
             print('consulta_individu', end = " ")
