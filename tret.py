@@ -68,7 +68,7 @@ class Tret:
 
         primer_crom, segon_crom = self._cromosoma.primer_cromosoma(),self._cromosoma.segon_cromosoma()
         portadors = ''
-        for i in self.lst_individus()[::-1]:
+        for i in sorted(self.lst_individus()[::-1]):
             portadors += '\n  ' + i
         return '  '+ self._tret + '\n  '+ primer_crom + '\n  ' + segon_crom + portadors
 
