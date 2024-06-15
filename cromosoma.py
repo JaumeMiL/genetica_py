@@ -1,14 +1,28 @@
 class Cromosoma:
     def __init__(self,parell,num_gen):
+        """
+        Inicialitza un cromosoma amb el parell de cromosomes 'parell' i 'num_gen' gens.
+        """
         self._primer_cromosoma = parell[:num_gen]
         self._segon_cromosoma = parell[num_gen:]
 
     def primer_cromosoma(self):
+        """
+        Retorna el primer cromosoma.
+        """
         return self._primer_cromosoma
+    
     def segon_cromosoma(self):
+        """
+        Retorna el segon cromosoma.
+        """
         return self._segon_cromosoma
     
     def interseccio(self,altre):
+        """
+        Retorna la intersecció del cromosoma amb un altre cromosoma 'altre'. La intersecció es fa per caràcter.
+        Això vol dir que si els caràcters són iguals, el caràcter de la intersecció és el mateix, si no, el caràcter de la intersecció és '-'.
+        """
         primer = self.primer_cromosoma()
         segon = self.segon_cromosoma()
         primer_a = altre.primer_cromosoma()

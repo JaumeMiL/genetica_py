@@ -9,14 +9,13 @@ def main():
         
         if comanda == 'experiment':
             print('experiment', end = " ")
-            n = int(item()) #nº de individuos
-            m = int(item()) #nº de genes
+            n = int(item()) #nº de individus
+            m = int(item()) #nº de gens
             print(n,m)
             con_ind = ci(n)
             con_trets = ct(m)
             con_trets.llegeix_arbrebinari_int()
             con_ind.llegir_individu(m)
-
 
         elif comanda == 'consulta_individu':
             print('consulta_individu', end = " ")
