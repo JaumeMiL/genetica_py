@@ -1,4 +1,3 @@
-from experiment import Experiment
 from pytokr import pytokr
 from conjunt_individus import ConjuntIndividus as ci
 from conjunt_trets import Conjunt_trets as ct
