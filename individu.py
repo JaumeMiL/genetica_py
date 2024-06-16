@@ -10,13 +10,13 @@ class Individu:
         self._cromosoma = Cromosoma(parell,num_gen)
         self._lst_trets = [] 
     
-    def cromosoma_1(self):
+    def _cromosoma_1(self):
         """
         Retorna el primer cromosoma.
         """
         return self._cromosoma.primer_cromosoma()
     
-    def cromosoma_2(self):
+    def _cromosoma_2(self):
         """
         Retorna el segon cromosoma.
         """
@@ -28,7 +28,7 @@ class Individu:
         """
         return self._cromosoma
 
-    def llista_trets(self):
+    def _llista_trets(self):
         """
         Retorna la llista de trets.
         """
@@ -55,8 +55,8 @@ class Individu:
         Retorna la consulta de l'individu.
         """
         # Adaptem primer i segon perquè siguin una cadena
-        primer,segon = self.cromosoma_1(),self.cromosoma_2()
-        list_t = sorted(self.llista_trets())
+        primer,segon = self._cromosoma_1(),self._cromosoma_2()
+        list_t = sorted(self._llista_trets())
         trets = ''
         for i in list_t:
             trets = trets + f'\n  {i}'

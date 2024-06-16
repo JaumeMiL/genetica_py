@@ -27,7 +27,7 @@ def main():
             print('consulta_tret', end = " ")
             nom_tret = item()
             print(nom_tret)
-            consulta = con_trets.consulta_tret(nom_tret, con_ind)
+            consulta = con_trets.consulta_tret(nom_tret)
             print(consulta)
 
         elif comanda == 'distribucio_tret':

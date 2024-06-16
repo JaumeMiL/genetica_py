@@ -10,26 +10,33 @@ class Tret:
         self._tret = tret
         self._list_individus = []
         self._cromosoma = None
-        #self._individus = individus
 
-    def lst_individus(self):
+    def _lst_individus(self):
+        """
+        Retorna la llista dels individus que presenten el tret.
+        """
         return self._list_individus
 
     def afegir_individu(self, individu,con_ind):
-        if individu in self.lst_individus():
+        """
+        Afegeix el nou individu a la llista i modifica la instància de Cromosoma.
+        """
+        if individu in self._lst_individus():
             return False
         else:
             if self._list_individus == []:
-                primer_c, segon_c = con_ind.ind(individu).cromosoma_1(), con_ind.ind(individu).cromosoma_2()
-                self._cromosoma = Cromosoma(primer_c + segon_c, self._num_gen)
+                primer_c, segon_c = con_ind.ind(individu).parell_cromosomes().primer_cromosoma(), con_ind.ind(individu).parell_cromosomes().segon_cromosoma()
             else:
                 primer_c, segon_c = con_ind.ind(individu).parell_cromosomes().interseccio(self._cromosoma)
-                self._cromosoma = Cromosoma(primer_c + segon_c,self._num_gen)
-            self.lst_individus().append(individu)
-            #self._parell_tret.interseccio(self.__experiment.individu(individu).parell())
+                
+            self._cromosoma = Cromosoma(primer_c + segon_c,self._num_gen)
+            self._lst_individus().append(individu)
             return True
 
     def _camins(self,lst,arbre):
+        """
+        Troba tots els camins de l'arrel de l'arbre als elements de lst.
+        """
         def camins_aux(arbre,node,cami):
             if arbre.valor_arrel() == node:
                 cami.append(node)
@@ -53,22 +60,27 @@ class Tret:
         return cami
 
     def distribucio_tret(self,inordre,arbre_gen):
+        """
+        Retorna la distribució del tret en forma de l'inorde de l'arbre principal.
+        """
         distribucio = ' '
-        cami = self._camins(self.lst_individus(),arbre_gen)
+        cami = self._camins(self._lst_individus(),arbre_gen)
         for i in range(len(inordre)):
             if inordre[i] in cami:
-                if str(inordre[i]) in self.lst_individus():
+                if str(inordre[i]) in self._lst_individus():
                     distribucio += ' ' + str(inordre[i])
                 else:
                     distribucio += ' ' + str(-inordre[i])
         return distribucio
 
 
-    def consulta_tret(self,con_ind): # No sé si lo que estoy haciendo aquí se puede hacer.
-
+    def consulta_tret(self):
+        """
+        Retorna una string que representa la informació desitjada sobre el tret.
+        """
         primer_crom, segon_crom = self._cromosoma.primer_cromosoma(),self._cromosoma.segon_cromosoma()
         portadors = ''
-        for i in sorted(self.lst_individus()[::-1]):
+        for i in sorted(self._lst_individus()[::-1]):
             portadors += '\n  ' + i
         return '  '+ self._tret + '\n  '+ primer_crom + '\n  ' + segon_crom + portadors
 

@@ -1,4 +1,3 @@
-from pytokr import pytokr
 
 #------------------------------------------------------------------------
 
@@ -193,15 +192,6 @@ class ArbreBinari:
                 r_dre = self.fill_dre().__repr__()
                 return f"ArbreBinari({rt}, esq={r_esq}, dre={r_dre})"
                         
-def llegeix_arbrebinari_int(marca):
-    x = int(item())
-    if x != marca:
-        l = llegeix_arbrebinari_int(marca)
-        r = llegeix_arbrebinari_int(marca)
-        return ArbreBinari(x,l,r)
-    else:
-        return ArbreBinari()
 
 #------------------------------------------------------------------------
 
-item, items = pytokr(iter=True)

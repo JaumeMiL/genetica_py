@@ -18,15 +18,15 @@ class Cromosoma:
         """
         return self._segon_cromosoma
     
-    def interseccio(self,altre):
+    def interseccio(self,altre_crom):
         """
         Retorna la intersecció del cromosoma amb un altre cromosoma 'altre'. La intersecció es fa per caràcter.
         Això vol dir que si els caràcters són iguals, el caràcter de la intersecció és el mateix, si no, el caràcter de la intersecció és '-'.
         """
         primer = self.primer_cromosoma()
         segon = self.segon_cromosoma()
-        primer_a = altre.primer_cromosoma()
-        segon_a = altre.segon_cromosoma()
+        primer_a = altre_crom.primer_cromosoma()
+        segon_a = altre_crom.segon_cromosoma()
         def interseccio_aux(crom_1,crom_2,interseccio):
             for i in range(len(crom_1)):
                 if crom_1[i] == crom_2[i]:
