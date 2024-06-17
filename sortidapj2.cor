@@ -1,0 +1,27 @@
+experiment 7 4
+consulta_individu 4
+  0011
+  0100
+afegir_tret 20aye 3
+experiment 7 4
+afegir_tret nyya1 7
+consulta_individu 4
+  1000
+  1011
+consulta_tret 58oqx
+  error
+afegir_tret dc53q 7
+consulta_individu 6
+  0101
+  0001
+consulta_tret q31am
+  error
+consulta_tret jizd5
+  error
+consulta_individu 6
+  0101
+  0001
+consulta_tret sk590
+  error
+afegir_tret drsnj 6
+fi

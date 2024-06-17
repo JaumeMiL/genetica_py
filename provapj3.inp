@@ -1,0 +1,29 @@
+experiment 5 6
+1 2 5 0 0 3 0 0 4 0 0
+011001110000
+010011000111
+010100100001
+100101001110
+101000000001
+consulta_tret nfiow
+afegir_tret rc2h0 2
+consulta_individu 3
+experiment 7 2
+1 5 6 0 0 3 0 0 7 4 0 0 2 0 0
+0110
+0011
+0110
+1110
+1100
+1011
+1001
+distribucio_trets xwmcf
+afegir_tret a6e0a 7
+distribucio_trets x67si
+distribucio_trets gf9hz
+distribucio_trets ptmrr
+consulta_individu 3
+consulta_tret demhv
+distribucio_trets nxmae
+distribucio_trets vg39w
+fi

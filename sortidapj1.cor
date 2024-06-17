@@ -1,0 +1,51 @@
+experiment 11 10
+consulta_individu 10
+  1100011011
+  0111110001
+consulta_individu 4
+  1101111001
+  1101100101
+afegir_tret pncrm 2
+afegir_tret um7vw 9
+consulta_tret 0o7t5
+  error
+consulta_tret 758b1
+  error
+consulta_tret uzb6b
+  error
+experiment 17 4
+consulta_individu 1
+  0011
+  0100
+afegir_tret n7jif 10
+afegir_tret qg5sq 10
+consulta_individu 12
+  0101
+  0001
+consulta_individu 8
+  1100
+  0011
+consulta_tret 4msph
+  error
+consulta_tret 633me
+  error
+consulta_tret lx9kt
+  error
+consulta_tret 7cy3y
+  error
+consulta_tret e4j37
+  error
+consulta_individu 12
+  0101
+  0001
+experiment 23 5
+consulta_tret 2givn
+  error
+afegir_tret 3431l 21
+consulta_tret w0jym
+  error
+afegir_tret fkgqm 19
+consulta_individu 20
+  11110
+  10011
+fi

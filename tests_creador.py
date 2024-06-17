@@ -3,10 +3,10 @@ import string
 from arbre_binari import ArbreBinari
 
 # Definim unes variables constants
-NUM_EXPERIMENTS = 3
-MAX_INDIVIDUS = 30
-MAX_LLARG_CROMO = 10
-NUM_MAXIM_INSTRUCCIONS = 20
+NUM_EXPERIMENTS = 2
+MAX_INDIVIDUS = 10
+MAX_LLARG_CROMO = 6
+NUM_MAXIM_INSTRUCCIONS = 17
 NOM_TRET_LLARGADA = 5
 
 # Generarem un arbre aleatori amb n nodes amb n senar
@@ -44,7 +44,7 @@ def generar_instruccions(n):
             random_paraules = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
             if trets and random.randint(0, 1):
                 ran = random.sample(sorted(trets), 1)[0]
-            trets.add(ran)
+                trets.add(ran)
 
             if comanda == "afegir_tret":
                 print(f"{comanda} {random_paraules} {random.randint(1, n)}")
