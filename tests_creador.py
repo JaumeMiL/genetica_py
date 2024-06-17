@@ -29,10 +29,18 @@ def generar_arbre_binari(n):
 
     return auxiliar(valors)
 
+def gererador_de_trets(num):
+    l = []
+    for _ in range(num):
+        tret = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
+        l.append(tret)
+    return l
+
 # Fem una funció que ens anirà generant instruccions aleatòries
 def generar_instruccions(n):
-    comandes = ["consulta_individu", "distribucio_trets", "consulta_tret", "afegir_tret"]
-    trets = set()
+    comandes = ["consulta_individu", "distribucio_tret", "consulta_tret", "afegir_tret"]
+    #trets = set()
+    trets = gererador_de_trets(random.randint(2,4))
     
     for j in range(random.randint(1, NUM_MAXIM_INSTRUCCIONS)):
         comanda = random.choices(comandes, k=1)[0]
@@ -40,16 +48,16 @@ def generar_instruccions(n):
         if comanda == "consulta_individu":
             print(f"{comanda} {random.randint(1, n)}")
 
-        elif comanda in ["afegir_tret", "distribucio_trets", "consulta_tret"]:
-            random_paraules = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
-            if trets and random.randint(0, 1):
-                ran = random.sample(sorted(trets), 1)[0]
-                trets.add(ran)
+        elif comanda in ["afegir_tret", "distribucio_tret", "consulta_tret"]:
+            #random_paraules = ''.join(random.choices(string.ascii_lowercase + string.digits, k=NOM_TRET_LLARGADA))
+            #if trets and random.randint(0, 1):
+                #ran = random.sample(sorted(trets), 1)[0]
+                #trets.add(ran)
 
             if comanda == "afegir_tret":
-                print(f"{comanda} {random_paraules} {random.randint(1, n)}")
+                print(f"{comanda} {random.choice(trets)} {random.randint(1, n)}")
             else:
-                print(f"{comanda} {random_paraules}")
+                print(f"{comanda} {random.choice(trets)}")
 
 # Anem generant els experiments i les instruccions
 for i in range(NUM_EXPERIMENTS):
